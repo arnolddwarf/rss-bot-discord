@@ -1,0 +1,50 @@
+name: Run RSS to Discord Bot
+
+on:
+  schedule:
+    # Corre cada 15 minutos (mínimo recomendado para programaciones en GitHub)
+    - cron: '*/15 * * * *'
+  workflow_dispatch: # Permite ejecutar el bot de forma manual desde la web de GitHub
+
+permissions:
+  contents: write # Requerido para poder subir los cambios de db.json de vuelta al repositorio
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run bot (One-Shot Mode)
+        env:
+          DISCORD_WEBHOOK_DEFAULT: ${{ secrets.DISCORD_WEBHOOK_DEFAULT }}
+          DISCORD_WEBHOOK_WORDPRESS: ${{ secrets.DISCORD_WEBHOOK_WORDPRESS }}
+          DISCORD_WEBHOOK_HMR: ${{ secrets.DISCORD_WEBHOOK_HMR }}
+        run: |
+          # Modificamos config.json para asegurar que corra una sola vez y finalice (one-shot)
+          node -e "
+            const fs = require('fs');
+            const cfg = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+            cfg.loopMode = false;
+            fs.writeFileSync('config.json', JSON.stringify(cfg, null, 2));
+          "
+          node index.js
+
+      - name: Commit and Push DB changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add db.json
+          git commit -m "Auto-update database [skip ci]" || echo "No changes to commit"
+          git push

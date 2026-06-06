@@ -1,0 +1,46 @@
+{
+  "checkIntervalMinutes": 10,
+  "loopMode": true,
+  "feeds": [
+    {
+      "name": "Plotn08",
+      "url": "https://plotn08.org/feed/",
+      "webhookEnvVar": "DISCORD_WEBHOOK_WORDPRESS",
+      "color": "#7289da",
+      "showDescription": true,
+      "showAuthor": false,
+      "allowedCategories": [
+        "Hard Rock",
+        "Heavy Metal |Power Metal",
+        "Glam|Sleaze|Hair Hard Rock",
+        "Melodic Rock | AOR"
+      ],
+      "categoryColors": {
+        "Hard Rock": "#e74c3c",
+        "Heavy Metal |Power Metal": "#9b59b6",
+        "Glam|Sleaze|Hair Hard Rock": "#e91e63",
+        "Melodic Rock | AOR": "#3498db"
+      }
+    },
+    {
+      "name": "Heavy Metal Rarities",
+      "url": "https://heavymetalrarities.com/forum/feed.php?mode=news",
+      "webhookEnvVar": "DISCORD_WEBHOOK_HMR",
+      "color": "#7289da",
+      "showDescription": false,
+      "showAuthor": true,
+      "allowedCategories": [
+        "Albums [Hard Rock]",
+        "EPs [Hard Rock]",
+        "Demos [Hard Rock]",
+        "Best of/Comp [Hard Rock]"
+      ],
+      "categoryColors": {
+        "Albums [Hard Rock]": "#e74c3c",
+        "EPs [Hard Rock]": "#3498db",
+        "Demos [Hard Rock]": "#9b59b6",
+        "Best of/Comp [Hard Rock]": "#e91e63"
+      }
+    }
+  ]
+}

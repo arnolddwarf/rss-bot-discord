@@ -1,0 +1,14 @@
+{
+  "name": "rss-to-discord-bot",
+  "version": "1.0.0",
+  "description": "Bot para enviar actualizaciones de RSS feeds a canales de Discord mediante Webhooks.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "rss-parser": "^3.13.0"
+  }
+}
