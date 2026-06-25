@@ -31,6 +31,7 @@ jobs:
           DISCORD_WEBHOOK_DEFAULT: ${{ secrets.DISCORD_WEBHOOK_DEFAULT }}
           DISCORD_WEBHOOK_WORDPRESS: ${{ secrets.DISCORD_WEBHOOK_WORDPRESS }}
           DISCORD_WEBHOOK_HMR: ${{ secrets.DISCORD_WEBHOOK_HMR }}
+          DISCORD_WEBHOOK_EACINEMA: ${{ secrets.DISCORD_WEBHOOK_EACINEMA }}
         run: |
           # Modificamos config.json para asegurar que corra una sola vez y finalice (one-shot)
           node -e "

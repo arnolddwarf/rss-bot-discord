@@ -41,6 +41,14 @@
         "Demos [Hard Rock]": "#9b59b6",
         "Best of/Comp [Hard Rock]": "#e91e63"
       }
+    },
+    {
+      "name": "East Asian Cinema",
+      "url": "https://fetchrss.com/feed/1wcnTy4C28UF1wcnNZ0S18Ys.rss",
+      "webhookEnvVar": "DISCORD_WEBHOOK_EACINEMA",
+      "color": "#1877f2",
+      "showDescription": true,
+      "showAuthor": false
     }
   ]
 }
